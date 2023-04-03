@@ -15,16 +15,24 @@ let minEnemyX = space.width;
 let maxEnemyX = 0;
 let yDangerTerritory = blockSize;
 
+//creating cinematic background
+const canvasBackGround = document.getElementById('space');
+canvasBackGround.style.backgroundImage = "url('../images/spaceInvadorBackGround.jpg')";
+window.onload = moveBackGround();
+function moveBackGround(){
+    console.log("onload window");
+}
+
 //batman Spaceship image source
 const batImg = new Image();
-batImg.src = 'images/batmanLogo.png'; // Set source path
+batImg.src = 'images/batmanLogoColorized.png'; // Set source path
 batImg.onload = function(){
     ctx.drawImage(batImg,batX,batY);
 }; 
 
 //enemies iamge source
 const enemyImg = new Image();
-enemyImg.src = "images/skull.png";
+enemyImg.src = "images/skullColorized.png";
 enemyImg.onload =function(){ printEnemy(10)};
 
 //enemy location arry 
@@ -130,7 +138,6 @@ function shooting(){
                     clearInterval(movingEnemyInterval);
                 }
                 clearInterval(shoothingInterval);      
-
                 shoothingInterval = undefined;
             }
         }
